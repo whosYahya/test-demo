@@ -1,0 +1,65 @@
+LEA-001	Leave Application	Leave Application Creation & Basic Details	Create Leave Application with mandatory fields only (Employee, Leave Type, From Date, To Date)
+LEA-002	Leave Application	Leave Application Creation & Basic Details	Create Leave Application with all basic fields (Employee, Leave Type, Dates, Company, Approver)
+LEA-003	Leave Application	Series & Auto-generation	Series field is auto-generated in format HR-LAP-.YYYY.-
+LEA-004	Leave Application	Series & Auto-generation	Series field cannot be manually edited
+LEA-005	Leave Application	Series & Auto-generation	Unique Series is generated for each leave application
+LEA-006	Leave Application	Employee Selection	Valid employee can be selected in Employee field
+LEA-007	Leave Application	Employee Selection	Invalid/non-existent employee is rejected
+LEA-008	Leave Application	Employee Selection	Employee field is mandatory and cannot be left blank
+LEA-009	Leave Application	Leave Type Selection	Valid leave type can be selected from dropdown
+LEA-010	Leave Application	Leave Type Selection	Leave Type field is mandatory and cannot be left blank
+LEA-011	Leave Application	Leave Type Selection	Leave Type displays all available options (Annual, Sick, Personal, etc.)
+LEA-012	Leave Application	Leave Type Selection	Employee's leave balance is checked for selected leave type
+LEA-013	Leave Application	Company Details	Valid company is selected and displayed
+LEA-014	Leave Application	Company Details	Company field is mandatory
+LEA-015	Leave Application	Company Details	Company auto-populates based on employee's assigned company
+LEA-016	Leave Application	Date Range	From Date is mandatory and cannot be left blank
+LEA-017	Leave Application	Date Range	To Date is mandatory and cannot be left blank
+LEA-018	Leave Application	Date Range	From Date cannot be after To Date
+LEA-019	Leave Application	Date Range	From Date cannot be in the past
+LEA-020	Leave Application	Date Range	To Date cannot be before From Date
+LEA-021	Leave Application	Date Range	Invalid date format is rejected
+LEA-022	Leave Application	Date Range	Leave duration is calculated correctly (From Date to To Date)
+LEA-023	Leave Application	Half Day Leave	Half Day checkbox can be checked
+LEA-024	Leave Application	Half Day Leave	Half Day checkbox can be unchecked
+LEA-025	Leave Application	Half Day Leave	Half Day with single date (From Date = To Date) is valid
+LEA-026	Leave Application	Half Day Leave	Half Day with date range is rejected
+LEA-027	Leave Application	Half Day Leave	Half Day reduces leave balance by 0.5 days
+LEA-028	Leave Application	Half Day Leave	Full day reduces leave balance by 1 day
+LEA-029	Leave Application	Reason	Reason field is optional
+LEA-030	Leave Application	Reason	Reason field accepts text input
+LEA-031	Leave Application	Reason	Reason field accepts special characters
+LEA-032	Leave Application	Leave Approver	Valid leave approver can be selected
+LEA-033	Leave Application	Leave Approver	Invalid approver is rejected
+LEA-034	Leave Application	Leave Approver	Leave Approver field is mandatory and cannot be left blank
+LEA-035	Leave Application	Leave Approver	Leave Approver must have approval authority for the employee
+LEA-036	Leave Application	Posting Date	Posting Date is auto-populated with current date
+LEA-037	Leave Application	Posting Date	Posting Date cannot be manually changed
+LEA-038	Leave Application	Posting Date	Posting Date is recorded accurately on submission
+LEA-039	Leave Application	Leave Balance	Leave balance is displayed for selected leave type
+LEA-040	Leave Application	Leave Balance	Leave balance decreases after leave application is approved
+LEA-041	Leave Application	Leave Balance	Leave balance is restored after leave is cancelled
+LEA-042	Leave Application	Leave Balance	Leave application is rejected if balance is insufficient
+LEA-043	Leave Application	Leave Balance	Leave balance updates are reflected in real-time
+LEA-044	Leave Application	Status & Workflow	Status defaults to Open on creation
+LEA-045	Leave Application	Status & Workflow	Status changes to Approved after approval
+LEA-046	Leave Application	Status & Workflow	Status changes to Rejected after rejection
+LEA-047	Leave Application	Status & Workflow	Cancelled leave application shows Cancelled status
+LEA-048	Leave Application	Status & Workflow	Only authorised user can approve leave application
+LEA-049	Leave Application	Data Validation	Leave Application cannot be saved without Employee
+LEA-050	Leave Application	Data Validation	Leave Application cannot be saved without Leave Type
+LEA-051	Leave Application	Data Validation	Leave Application cannot be saved without From Date
+LEA-052	Leave Application	Data Validation	Leave Application cannot be saved without To Date
+LEA-053	Leave Application	Data Validation	Leave Application cannot be submitted with From Date after To Date
+LEA-054	Leave Application	Editing & Updates	Edit Leave Type on existing leave application
+LEA-055	Leave Application	Editing & Updates	Edit date range on existing leave application
+LEA-056	Leave Application	Editing & Updates	Edit reason on existing leave application
+LEA-057	Leave Application	Editing & Updates	Edit leave approver before submission
+LEA-058	Leave Application	Editing & Updates	Edit is restricted after leave is approved
+LEA-059	Leave Application	Form Actions	Save Leave Application successfully
+LEA-060	Leave Application	Form Actions	Submit Leave Application successfully
+LEA-061	Leave Application	Form Actions	Form shows "Not Saved" status before save
+LEA-062	Leave Application	Form Actions	Form shows "Saved" status after successful save
+LEA-063	Leave Application	Form Actions	Duplicate existing Leave Application
+LEA-064	Leave Application	Form Actions	Cancel submitted Leave Application
+LEA-065	Leave Application	Form Actions	Delete Draft Leave Application

@@ -1,0 +1,51 @@
+Test ID	DocType	Module	Test Case Title
+SC-001	Service Call	Service Call Creation & Basic Details	Create Service Call with mandatory fields only (Customer, Service Type)
+SC-002	Service Call	Service Call Creation & Basic Details	Create Service Call with all basic fields (Customer, Title, Description, Priority)
+SC-003	Service Call	Service Call Creation & Basic Details	Create Service Call with multiple Service Items
+SC-004	Service Call	Service Call Creation & Basic Details	Create Service Call for Individual customer type
+SC-005	Service Call	Service Call Creation & Basic Details	Create Service Call for Company customer type
+SC-006	Service Call	Customer & Location Validation	Valid customer selection populates branch locations
+SC-007	Service Call	Customer & Location Validation	Invalid/non-existent customer is rejected
+SC-008	Service Call	Customer & Location Validation	Service Call can be linked to specific branch location
+SC-009	Service Call	Customer & Location Validation	Contact person is filtered by selected branch
+SC-010	Service Call	Technician Assignment	Assign available technician to Service Call
+SC-011	Service Call	Technician Assignment	Reassign technician to different Service Call
+SC-012	Service Call	Technician Assignment	Service Call without technician assignment is saved successfully
+SC-013	Service Call	Technician Assignment	Duplicate technician assignment is blocked
+SC-014	Service Call	Priority & Status Management	Create High Priority Service Call
+SC-015	Service Call	Priority & Status Management	Create Low Priority Service Call
+SC-016	Service Call	Priority & Status Management	Status transitions from Draft to Assigned to In Progress
+SC-017	Service Call	Priority & Status Management	Status transitions from In Progress to Completed
+SC-018	Service Call	Priority & Status Management	Invalid status transition is rejected with error message
+SC-019	Service Call	Service Date & Time	Schedule Service Call with valid date & time
+SC-020	Service Call	Service Date & Time	Service date in past is rejected
+SC-021	Service Call	Service Date & Time	Service date cannot be left blank
+SC-022	Service Call	Service Date & Time	Service start time and end time are recorded correctly
+SC-023	Service Call	Service Items & Inventory	Add single Service Item to Service Call
+SC-024	Service Call	Service Items & Inventory	Add multiple Service Items to same Service Call
+SC-025	Service Call	Service Items & Inventory	Delete Service Item row from Service Call
+SC-026	Service Call	Service Items & Inventory	Service Item quantity can be updated
+SC-027	Service Call	Service Items & Inventory	Out-of-stock Service Item is flagged with warning
+SC-028	Service Call	Billing & Cost Calculation	Service Call total cost is calculated correctly
+SC-029	Service Call	Billing & Cost Calculation	Discount applied to Service Call reduces total cost
+SC-030	Service Call	Billing & Cost Calculation	Additional charges increase Service Call total cost
+SC-031	Service Call	Billing & Cost Calculation	Billable flag determines invoice eligibility
+SC-032	Service Call	SLA & Warranty	Service Call within warranty period is marked correctly
+SC-033	Service Call	SLA & Warranty	Service Call outside warranty period is marked correctly
+SC-034	Service Call	SLA & Warranty	SLA response time is tracked and validated
+SC-035	Service Call	Documentation	Attach document (image/PDF) to Service Call
+SC-036	Service Call	Documentation	Add internal notes to Service Call
+SC-037	Service Call	Documentation	Add customer-visible remarks to Service Call
+SC-038	Service Call	Documentation	Delete attached document from Service Call
+SC-039	Service Call	Data Validation	Service Call with missing mandatory fields cannot be saved
+SC-040	Service Call	Data Validation	Invalid email format in contact field is rejected
+SC-041	Service Call	Data Validation	Invalid phone number format is rejected
+SC-042	Service Call	Editing & Updates	Edit existing Service Call details
+SC-043	Service Call	Editing & Updates	Edit Service Call after status change is restricted
+SC-044	Service Call	Editing & Updates	Edit Service Call technician assignment after creation
+SC-045	Service Call	Bulk Operations	Duplicate existing Service Call
+SC-046	Service Call	Bulk Operations	Delete Service Call (permitted status only)
+SC-047	Service Call	Bulk Operations	Bulk update Service Call status
+SC-048	Service Call	Permissions & Access	Technician views only assigned Service Calls
+SC-049	Service Call	Permissions & Access	Customer views only their own Service Calls
+SC-050	Service Call	Permissions & Access	Manager can approve/reject Service Calls

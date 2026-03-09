@@ -1,0 +1,53 @@
+Test ID	DocType	Module	Test Case Title
+ATT-001	Attendance	Attendance Creation & Basic Details	Create Attendance with mandatory fields only (Employee, Status, Attendance Date)
+ATT-002	Attendance	Attendance Creation & Basic Details	Create Attendance with all basic fields (Employee, Status, Date, Company, Shift)
+ATT-003	Attendance	Attendance Creation & Basic Details	Create Attendance with Status as Present
+ATT-004	Attendance	Attendance Creation & Basic Details	Create Attendance with Status as Absent
+ATT-005	Attendance	Attendance Creation & Basic Details	Create Attendance with Status as Leave
+ATT-006	Attendance	Attendance Creation & Basic Details	Create Attendance with Status as Half Day
+ATT-007	Attendance	Series & Auto-generation	Series field is auto-generated in format HR-ATT-.YYYY.-
+ATT-008	Attendance	Series & Auto-generation	Series field cannot be manually edited
+ATT-009	Attendance	Series & Auto-generation	Unique Series is generated for each attendance record
+ATT-010	Attendance	Employee Selection	Valid employee can be selected from dropdown
+ATT-011	Attendance	Employee Selection	Invalid/non-existent employee is rejected
+ATT-012	Attendance	Employee Selection	Employee field is mandatory and cannot be left blank
+ATT-013	Attendance	Employee Selection	Duplicate attendance for same employee on same date is blocked
+ATT-014	Attendance	Attendance Date	Valid attendance date is accepted
+ATT-015	Attendance	Attendance Date	Attendance Date cannot be left blank (mandatory)
+ATT-016	Attendance	Attendance Date	Future attendance date is accepted
+ATT-017	Attendance	Attendance Date	Past attendance date is accepted
+ATT-018	Attendance	Attendance Date	Invalid date format is rejected
+ATT-019	Attendance	Status Management	Status dropdown shows all available options (Present, Absent, Leave, Half Day)
+ATT-020	Attendance	Status Management	Status cannot be left blank (mandatory)
+ATT-021	Attendance	Status Management	Status can be changed after creation
+ATT-022	Attendance	Company Assignment	Valid company is selected and displayed
+ATT-023	Attendance	Company Assignment	Company field is auto-populated based on employee
+ATT-024	Attendance	Company Assignment	Company field can be manually changed
+ATT-025	Attendance	Shift Details	Valid shift can be selected from dropdown
+ATT-026	Attendance	Shift Details	Shift field is optional and can be left blank
+ATT-027	Attendance	Shift Details	Shift auto-populates based on employee's assigned shift
+ATT-028	Attendance	Shift Details	Multiple shifts can be assigned to same employee on different dates
+ATT-029	Attendance	Late Entry Tracking	Late Entry checkbox can be marked
+ATT-030	Attendance	Late Entry Tracking	Late Entry is checked when employee arrives after scheduled time
+ATT-031	Attendance	Late Entry Tracking	Late Entry with Present status is valid
+ATT-032	Attendance	Late Entry Tracking	Late Entry with Absent status is invalid
+ATT-033	Attendance	Late Entry Tracking	Late Entry checkbox can be unchecked
+ATT-034	Attendance	Early Exit Tracking	Early Exit checkbox can be marked
+ATT-035	Attendance	Early Exit Tracking	Early Exit is checked when employee leaves before scheduled time
+ATT-036	Attendance	Early Exit Tracking	Early Exit with Present status is valid
+ATT-037	Attendance	Early Exit Tracking	Early Exit with Absent status is invalid
+ATT-038	Attendance	Early Exit Tracking	Early Exit checkbox can be unchecked
+ATT-039	Attendance	Late Entry & Early Exit Combination	Both Late Entry and Early Exit can be checked together
+ATT-040	Attendance	Late Entry & Early Exit Combination	Both Late Entry and Early Exit cannot be checked with Absent status
+ATT-041	Attendance	Data Validation	Attendance cannot be saved without Employee
+ATT-042	Attendance	Data Validation	Attendance cannot be saved without Status
+ATT-043	Attendance	Data Validation	Attendance cannot be saved without Attendance Date
+ATT-044	Attendance	Editing & Updates	Edit existing Attendance Status
+ATT-045	Attendance	Editing & Updates	Edit Employee in existing Attendance
+ATT-046	Attendance	Editing & Updates	Edit Attendance Date
+ATT-047	Attendance	Editing & Updates	Edit Shift details
+ATT-048	Attendance	Editing & Updates	Toggle Late Entry checkbox
+ATT-049	Attendance	Editing & Updates	Toggle Early Exit checkbox
+ATT-050	Attendance	Form Actions	Save Attendance successfully
+ATT-051	Attendance	Form Actions	Form shows "Not Saved" status before save
+ATT-052	Attendance	Form Actions	Form shows "Saved" status after successful save

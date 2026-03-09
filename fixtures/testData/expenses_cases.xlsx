@@ -1,0 +1,60 @@
+EXP-001	Expense Claim	Expense Claim Creation & Basic Details	Create Expense Claim with mandatory fields only (From Employee, Expense Approver)
+EXP-002	Expense Claim	Expense Claim Creation & Basic Details	Create Expense Claim with all basic fields (Employee, Department, Company, Approver)
+EXP-003	Expense Claim	Series & Auto-generation	Series field is auto-generated in format HR-EXP-.YYYY.-
+EXP-004	Expense Claim	Series & Auto-generation	Series field cannot be manually edited
+EXP-005	Expense Claim	Series & Auto-generation	Unique Series is generated for each expense claim record
+EXP-006	Expense Claim	Employee Selection	Valid employee can be selected in From Employee field
+EXP-007	Expense Claim	Employee Selection	Invalid/non-existent employee is rejected
+EXP-008	Expense Claim	Employee Selection	From Employee field is mandatory and cannot be left blank
+EXP-009	Expense Claim	Employee Selection	Department auto-populates based on selected employee
+EXP-010	Expense Claim	Company Details	Valid company is selected and displayed
+EXP-011	Expense Claim	Company Details	Company field is mandatory
+EXP-012	Expense Claim	Company Details	Company GSTIN is auto-populated based on selected company
+EXP-013	Expense Claim	Company Details	Company GSTIN field is read-only
+EXP-014	Expense Claim	Expense Approver	Valid expense approver can be selected
+EXP-015	Expense Claim	Expense Approver	Invalid approver is rejected
+EXP-016	Expense Claim	Expense Approver	Expense Approver field is mandatory
+EXP-017	Expense Claim	Approval Status	Approval Status defaults to Draft on creation
+EXP-018	Expense Claim	Approval Status	Approval Status can be changed to Approved
+EXP-019	Expense Claim	Approval Status	Approval Status can be changed to Rejected
+EXP-020	Expense Claim	Approval Status	Approval Status can be changed to Returned
+EXP-021	Expense Claim	Expenses Table	Add single expense row to claim
+EXP-022	Expense Claim	Expenses Table	Add multiple expense rows to same claim
+EXP-023	Expense Claim	Expenses Table	Delete expense row from table
+EXP-024	Expense Claim	Expenses Table	Expense Date is populated and validated
+EXP-025	Expense Claim	Expenses Table	Expense Claim Type dropdown shows valid options
+EXP-026	Expense Claim	Expenses Table	Expense Claim Type field is mandatory
+EXP-027	Expense Claim	Expenses Table	Description field is optional
+EXP-028	Expense Claim	Expenses Table	Amount field is mandatory
+EXP-029	Expense Claim	Expenses Table	Amount field accepts decimal values
+EXP-030	Expense Claim	Expenses Table	Negative amount is rejected
+EXP-031	Expense Claim	Expenses Table	Sanctioned Amount is auto-populated or manually entered
+EXP-032	Expense Claim	Expenses Table	Sanctioned Amount cannot exceed Amount
+EXP-033	Expense Claim	Expenses Table	Total claim amount is calculated from all expense rows
+EXP-034	Expense Claim	Taxes & Charges	Add single tax row to expense claim
+EXP-035	Expense Claim	Taxes & Charges	Add multiple tax rows to expense claim
+EXP-036	Expense Claim	Taxes & Charges	Delete tax row from table
+EXP-037	Expense Claim	Taxes & Charges	Tax Account Head is mandatory in tax row
+EXP-038	Expense Claim	Taxes & Charges	Tax Amount is mandatory in tax row
+EXP-039	Expense Claim	Taxes & Charges	Total taxes calculated correctly from all tax rows
+EXP-040	Expense Claim	Taxes & Charges	Grand Total includes taxes and sanctioned amount
+EXP-041	Expense Claim	Accounting Details	Cost Center field can be selected
+EXP-042	Expense Claim	Accounting Details	Project field can be linked to expense claim
+EXP-043	Expense Claim	Accounting Details	Payable Account is auto-populated
+EXP-044	Expense Claim	Accounting Details	Payable Account can be manually changed
+EXP-045	Expense Claim	Accounting Details	Mode of Payment can be selected
+EXP-046	Expense Claim	Accounting Details	Total Advance Amount is displayed if advance exists
+EXP-047	Expense Claim	Data Validation	Expense Claim cannot be saved without From Employee
+EXP-048	Expense Claim	Data Validation	Expense Claim cannot be saved without Company
+EXP-049	Expense Claim	Data Validation	Expense Claim cannot be saved without Expense Approver
+EXP-050	Expense Claim	Data Validation	Expense Claim cannot be submitted without expense rows
+EXP-051	Expense Claim	Editing & Updates	Edit expense row amount on existing claim
+EXP-052	Expense Claim	Editing & Updates	Edit expense claim type on existing row
+EXP-053	Expense Claim	Editing & Updates	Edit expense approver before submission
+EXP-054	Expense Claim	Editing & Updates	Edit is restricted after Approval Status is Approved
+EXP-055	Expense Claim	Form Actions	Save Expense Claim successfully
+EXP-056	Expense Claim	Form Actions	Submit Expense Claim successfully
+EXP-057	Expense Claim	Form Actions	Form shows "Not Saved" status before save
+EXP-058	Expense Claim	Form Actions	Form shows "Saved" status after successful save
+EXP-059	Expense Claim	Form Actions	Duplicate existing Expense Claim
+EXP-060	Expense Claim	Form Actions	Cancel submitted Expense Claim

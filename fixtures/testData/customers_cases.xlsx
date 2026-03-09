@@ -1,0 +1,22 @@
+Test ID	DocType	Module	Test Case Title
+CUST-001	AMC Customers	Customer Creation & Basic Details	Create customer with Customer Name only (minimum required)
+CUST-002	AMC Customers	Customer Creation & Basic Details	Create Company customer with all basic fields (Name, Type, GST, PAN)
+CUST-003	AMC Customers	Customer Creation & Basic Details	Create Individual customer type
+CUST-004	AMC Customers	Customer Creation & Basic Details	Create Partnership customer type
+CUST-005	AMC Customers	GST Validation	Valid 15-character GSTIN is accepted
+CUST-006	AMC Customers	GST Validation	Invalid GST format is rejected with specific error message
+CUST-007	AMC Customers	GST Validation	Duplicate GSTIN across two customers is blocked
+CUST-008	AMC Customers	GST Validation	GST field can be left blank (optional for Individual)
+CUST-009	AMC Customers	GST Validation	Duplicate PAN across two customers is blocked
+CUST-010	AMC Customers	Branch Locations	Add single branch location to customer
+CUST-011	AMC Customers	Branch Locations	Add multiple branch locations to same customer
+CUST-012	AMC Customers	Branch Locations	Delete a branch location row
+CUST-013	AMC Customers	Branch Locations	Branch on AMC Contract is filtered by selected customer
+CUST-014	AMC Customers	Contact Details	Add primary contact to customer
+CUST-015	AMC Customers	Contact Details	Only one contact marked as Is Primary per customer
+CUST-016	AMC Customers	Contact Details	Contact Person on AMC Contract filtered by selected Branch
+CUST-017	AMC Customers	Contact Details	Mobile auto-fetched when Contact Person selected on Contract
+CUST-018	AMC Customers	Connections Tab	Connections tab shows linked AMC Contracts for customer
+CUST-019	AMC Customers	Connections Tab	Connections tab shows linked Service Calls for customer
+CUST-020	AMC Customers	Permissions	Technician role can only READ AMC Customers
+CUST-021	AMC Customers	Data Integrity	Deleting customer with active contracts is blocked

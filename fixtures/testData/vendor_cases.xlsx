@@ -1,0 +1,41 @@
+Test ID	DocType	Module	Test Case Title
+VEN-001	Vendor	Vendor Creation & Basic Details	Create Vendor with Vendor Name only (mandatory field)
+VEN-002	Vendor	Vendor Creation & Basic Details	Create Vendor with all basic fields (Name, Type, PAN)
+VEN-003	Vendor	Vendor Creation & Basic Details	Create Vendor with Type as Company
+VEN-004	Vendor	Vendor Creation & Basic Details	Create Vendor with Type as Individual
+VEN-005	Vendor	Primary Contact Details	Add Primary Contact Person
+VEN-006	Vendor	Primary Contact Details	Valid phone number format in Mobile No field
+VEN-007	Vendor	Primary Contact Details	Invalid phone number format is rejected
+VEN-008	Vendor	Primary Contact Details	Valid email format is accepted
+VEN-009	Vendor	Primary Contact Details	Invalid email format is rejected with error message
+VEN-010	Vendor	Tax Identification	Valid PAN number format is accepted
+VEN-011	Vendor	Tax Identification	Invalid PAN format is rejected
+VEN-012	Vendor	Tax Identification	Duplicate PAN across two vendors is blocked
+VEN-013	Vendor	Tax Identification	PAN field can be left blank (optional)
+VEN-014	Vendor	Registered Address	Add Registered Address to Vendor
+VEN-015	Vendor	Registered Address	Registered Address text is saved correctly
+VEN-016	Vendor	Registered Address	Registered Address with special characters is accepted
+VEN-017	Vendor	Address Table	Add single address row to Vendor
+VEN-018	Vendor	Address Table	Add multiple address rows to same Vendor
+VEN-019	Vendor	Address Table	Delete address row from table
+VEN-020	Vendor	Address Table	Address row Name field is populated correctly
+VEN-021	Vendor	Address Table	Address row City field is populated correctly
+VEN-022	Vendor	Address Table	Address row State field is populated correctly
+VEN-023	Vendor	Address Table	Address row GST No is validated and accepted
+VEN-024	Vendor	Address Table	Invalid GST No in address row is rejected
+VEN-025	Vendor	Address Table	Address row Mobile No field validation
+VEN-026	Vendor	Address Table	Duplicate GST No across address rows is blocked
+VEN-027	Vendor	Data Validation	Vendor cannot be saved without Vendor Name
+VEN-028	Vendor	Data Validation	Vendor Name with special characters is accepted
+VEN-029	Vendor	Data Validation	Type field dropdown shows all available options
+VEN-030	Vendor	Data Validation	Empty Type field defaults to Company
+VEN-031	Vendor	Editing & Updates	Edit existing Vendor Name
+VEN-032	Vendor	Editing & Updates	Edit Primary Contact Person details
+VEN-033	Vendor	Editing & Updates	Edit PAN number
+VEN-034	Vendor	Editing & Updates	Edit Registered Address
+VEN-035	Vendor	Editing & Updates	Edit address table rows
+VEN-036	Vendor	Form Actions	Save Vendor successfully
+VEN-037	Vendor	Form Actions	Form shows "Not Saved" status before save
+VEN-038	Vendor	Form Actions	Form shows "Saved" status after successful save
+VEN-039	Vendor	Form Actions	Duplicate existing Vendor
+VEN-040	Vendor	Form Actions	Delete Vendor (if permitted)

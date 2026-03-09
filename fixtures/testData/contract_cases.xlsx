@@ -1,0 +1,29 @@
+Test ID	DocType	Module	Test Case Title
+CON-001	AMC Contract	Contract Creation	Create AMC Contract with all mandatory fields
+CON-002	AMC Contract	Contract Creation	Start Date is mandatory — save fails without it
+CON-003	AMC Contract	Contract Creation	End Date is mandatory — save fails without it
+CON-004	AMC Contract	Contract Creation	No of Services is mandatory — save fails without it
+CON-005	AMC Contract	Contract Creation	Auto-naming follows AMC-.YY.MM.-.#### series
+CON-006	AMC Contract	Contract Date Logic	End Date before Start Date is rejected
+CON-007	AMC Contract	Contract Date Logic	Same Start and End Date is valid (single-day contract)
+CON-008	AMC Contract	Contract Date Logic	Multi-year contract is valid (e.g., 2 years)
+CON-009	AMC Contract	Service Count & Schedule	4 services Jan-Dec creates exactly 4 Maintenance Schedule rows
+CON-010	AMC Contract	Service Count & Schedule	12 services creates 12 monthly Maintenance Schedule rows
+CON-011	AMC Contract	Service Count & Schedule	1 service creates exactly 1 Maintenance Schedule row
+CON-012	AMC Contract	Service Count & Schedule	All schedule dates fall within contract Start-End range
+CON-013	AMC Contract	Service Count & Schedule	Changing No of Services from 4 to 6 regenerates 6 rows
+CON-014	AMC Contract	Service Count & Schedule	Maintenance Schedule Equipment column filled per row
+CON-015	AMC Contract	Customer & Branch Linkage	Contract cannot reference non-existent AMC Customer
+CON-016	AMC Contract	Customer & Branch Linkage	Branch dropdown is empty until Customer is selected
+CON-017	AMC Contract	Customer & Branch Linkage	Changing Customer clears Branch and Contact Person
+CON-018	AMC Contract	Customer & Branch Linkage	Contact Person dropdown filtered by selected Branch
+CON-019	AMC Contract	Contract Status	Status field accepts Active value
+CON-020	AMC Contract	Contract Status	Status field accepts Inactive value
+CON-021	AMC Contract	Contract Status	Status is blank by default on new contract
+CON-022	AMC Contract	Submit & Amend Workflow	Draft contract can be submitted
+CON-023	AMC Contract	Submit & Amend Workflow	Submitted contract fields are read-only
+CON-024	AMC Contract	Submit & Amend Workflow	Submitted contract can be amended to create new draft
+CON-025	AMC Contract	Submit & Amend Workflow	Submitted contract can be cancelled
+CON-026	AMC Contract	Company Branch	Company Branch saved independently of Customer Branch
+CON-027	AMC Contract	Service Calls Tab	Service Calls tab shows generated calls after submission
+CON-028	AMC Contract	Service Calls Tab	Service Calls tab is empty for unsaved draft contract
