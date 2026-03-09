@@ -5,7 +5,11 @@ const path = require('path');
 module.exports = async function () {
   const headless = (process.env.PW_HEADLESS || process.env.HEADLESS || 'true').toLowerCase() !== 'false';
   const browser = await chromium.launch({ headless });
-  const context = await browser.newContext();
+  const context = await browser.newContext({
+  extraHTTPHeaders: {
+    'ngrok-skip-browser-warning': 'true'
+    }
+  });
   const page    = await context.newPage();
 
   const baseURL  = process.env.BASE_URL     || 'http://127.0.0.1:8004';
