@@ -1,32 +1,126 @@
-name: Playwright Tests
+name: ERPNext E2E Tests
+
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  test:
+
+  # ── JOB 1: Smoke Gate ──────────────────────────────────────────
+  smoke:
+    name: Smoke Gate
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Smoke Suite
+        run: npx playwright test tests/smoke/ --reporter=list,junit
+        env:
+          BASE_URL:     ${{ secrets.BASE_URL }}
+          ERPNEXT_USER: ${{ secrets.ERPNEXT_USER }}
+          ERPNEXT_PASS: ${{ secrets.ERPNEXT_PASS }}
+          CI: true
+
+      - name: Upload smoke results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-results
+          path: test-results/
+          retention-days: 7
+
+  # ── JOB 2: Full E2E Suite ──────────────────────────────────────
+  e2e:
+    name: Full E2E Suite
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    env:
-      BASE_URL: ${{ secrets.BASE_URL }}
-      ERPNEXT_USER: ${{ secrets.ERPNEXT_USER }}
-      ERPNEXT_PASS: ${{ secrets.ERPNEXT_PASS }}
-      CI: true
+    needs: smoke
+
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Install Python dependencies
+        run: pip install openpyxl
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Full E2E Suite
+        run: npx playwright test tests/doctypes/ --reporter=list,junit,html,json
+        continue-on-error: true
+        env:
+          BASE_URL:     ${{ secrets.BASE_URL }}
+          ERPNEXT_USER: ${{ secrets.ERPNEXT_USER }}
+          ERPNEXT_PASS: ${{ secrets.ERPNEXT_PASS }}
+          CI: true
+
+      - name: Update AMC Master Tracker
+        run: |
+          python update_tracker.py \
+            --results test-results/results.json \
+            --excel AMC_Master_Tracker.xlsx
+        continue-on-error: true
+
+      - name: Publish test results
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Playwright E2E Results
+          path: test-results/*.xml
+          reporter: java-junit
+          fail-on-error: true
+
+      - name: Upload updated QA Tracker
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: AMC-Master-Tracker-Updated
+          path: AMC_Master_Tracker.xlsx
+          retention-days: 30
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-html-report
+          path: reports/html/
+          retention-days: 30
+
+      - name: Upload test evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-evidence
+          path: test-results/
+          retention-days: 14
