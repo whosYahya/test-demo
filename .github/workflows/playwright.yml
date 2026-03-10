@@ -8,6 +8,11 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      BASE_URL: ${{ secrets.BASE_URL }}
+      ERPNEXT_USER: ${{ secrets.ERPNEXT_USER }}
+      ERPNEXT_PASS: ${{ secrets.ERPNEXT_PASS }}
+      CI: true
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
