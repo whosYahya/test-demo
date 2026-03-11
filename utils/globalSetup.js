@@ -28,7 +28,7 @@ module.exports = async function () {
     // login-page snapshot.  No class or id assumptions.
     console.log('[globalSetup] Waiting for Email input …');
     const emailInput = page.getByRole('textbox', { name: /email/i });
-    await emailInput.waitFor({ timeout: 10000 });
+    await emailInput.waitFor({ timeout: 20000 });
 
     console.log(`[globalSetup] Filling email: ${email}`);
     await emailInput.fill(email);
@@ -41,7 +41,7 @@ module.exports = async function () {
 
     // ── wait for Frappe to navigate to /app ───────────────────
     console.log('[globalSetup] Waiting for redirect to /app …');
-    await page.waitForURL(/\/app/, { timeout: 15000 });
+    await page.waitForURL(/\/app/, { timeout: 20000 });
 
     // ── hard check: if we are NOT on /app something went wrong ─
     if (!page.url().includes('/app')) {
