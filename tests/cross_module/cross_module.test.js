@@ -1,10 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const { BASE_URL } = require('../../utils/helpers');
 
-const EXTRA_HEADERS = {
-  'ngrok-skip-browser-warning': 'true',
-};
-
 const CONFIG = {
   admin: {
     email: process.env.XMOD_ADMIN_USER || process.env.ERPNEXT_USER || 'Administrator',
@@ -182,7 +178,6 @@ function assertRequiredConfig() {
 async function createSession(browser, credentials) {
   const context = await browser.newContext({
     baseURL: BASE_URL,
-    extraHTTPHeaders: EXTRA_HEADERS,
   });
   const page = await context.newPage();
   await login(page, credentials);

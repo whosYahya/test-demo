@@ -66,7 +66,12 @@ def parse_playwright_results(results_path: str) -> dict:
 
     results = {}
 
-    for suite in data.get('suites', []):
+    def walk_suites(suites):
+        for suite in suites:
+            yield suite
+            yield from walk_suites(suite.get('suites', []))
+
+    for suite in walk_suites(data.get('suites', [])):
         for spec in suite.get('specs', []):
             title = spec.get('title', '')
             tc_id = extract_tc_id(title)
