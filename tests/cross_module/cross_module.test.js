@@ -1,5 +1,9 @@
 const { test, expect } = require('@playwright/test');
-const { BASE_URL } = require('../../utils/helpers');
+const { apiGet, apiPost, apiPut, getLoggedUser } = require('../../api/frappe.client');
+const { createAuthenticatedSession } = require('../../workflows/auth/session.workflow');
+const { resolveBaseUrl } = require('../../utils/environment');
+
+const BASE_URL = resolveBaseUrl();
 
 const CONFIG = {
   admin: {
@@ -176,59 +180,14 @@ function assertRequiredConfig() {
 }
 
 async function createSession(browser, credentials) {
-  const context = await browser.newContext({
-    baseURL: BASE_URL,
-  });
-  const page = await context.newPage();
-  await login(page, credentials);
-  return { context, page };
-}
-
-async function login(page, credentials) {
-  await page.goto(`${BASE_URL}/login`, { waitUntil: 'domcontentloaded' });
-
-  if (!page.url().includes('/login')) {
-    await ensureLoggedInUser(page, credentials.email);
-    return;
-  }
-
-  const emailInput = page.getByRole('textbox', { name: /email/i });
-  await emailInput.waitFor({ timeout: 15000 });
-  await emailInput.fill(credentials.email);
-  await page.getByRole('textbox', { name: /password/i }).fill(credentials.password);
-  await page.getByRole('button', { name: /^login$/i }).click();
-
-  await page.waitForURL(/\/(app|apps)/, { timeout: 30000 });
-  if (page.url().includes('/apps')) {
-    const erpTile = page.locator('a, div, button').filter({ hasText: /^ERPNext$/i }).first();
-    if (await erpTile.isVisible().catch(() => false)) {
-      await erpTile.click();
-      await page.waitForURL(/\/app\//, { timeout: 15000 }).catch(async () => {
-        await page.goto(`${BASE_URL}/app`);
-      });
-    }
-  }
-
-  await ensureLoggedInUser(page, credentials.email);
+  const session = await createAuthenticatedSession(browser, credentials);
+  await ensureLoggedInUser(session.page, credentials.email);
+  return session;
 }
 
 async function ensureLoggedInUser(page, expectedUser) {
-  const response = await apiGet(page, '/api/method/frappe.auth.get_logged_user');
-  expect(response.ok(), 'Login verification API failed.').toBeTruthy();
-  const body = await response.json();
-  expect(String(body.message || '').toLowerCase()).toContain(String(expectedUser).toLowerCase());
-}
-
-async function apiGet(page, apiPath) {
-  return page.context().request.get(apiPath);
-}
-
-async function apiPost(page, apiPath, data) {
-  return page.context().request.fetch(apiPath, { method: 'POST', data });
-}
-
-async function apiPut(page, apiPath, data) {
-  return page.context().request.fetch(apiPath, { method: 'PUT', data });
+  const actualUser = await getLoggedUser(page);
+  expect(String(actualUser).toLowerCase()).toContain(String(expectedUser).toLowerCase());
 }
 
 async function getEmployee(page, employeeId) {

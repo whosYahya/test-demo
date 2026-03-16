@@ -1,8 +1,8 @@
 const path = require('path');
 const { test, expect } = require('@playwright/test');
 const { leaves } = require('../../utils/helpers');
+const { loadLeaveCases } = require('../../data/loaders/leave-cases.loader');
 const {
-  loadLeaveCases,
   plusDays,
   formatDateDMY,
   openNewLeaveApplication,
