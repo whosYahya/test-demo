@@ -1,4 +1,4 @@
-﻿# ERPNext AMC Playwright Suite
+﻿# AMC Playwright Testing
 
 This repository is structured for CI deployment while protecting the live ERPNext production site from value-creating test flows.
 
