@@ -1,5 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const { vendor } = require('../../utils/helpers');
+const { uniquePAN, uniqueValue } = require('../../data/factories/unique.factory');
 const {
   loginToERPNext,
   gotoVendorList,
@@ -14,8 +15,6 @@ const {
   getTypeOptions,
   createVendor,
   deleteCurrentVendorViaShortcut,
-  uniqueValue,
-  uniquePAN,
   control,
   fieldInput,
   isValidPAN,

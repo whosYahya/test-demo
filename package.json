@@ -1,15 +1,27 @@
 {
   "name": "amc-test",
   "version": "1.0.0",
+  "private": true,
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "npx playwright test tests/doctypes --project=chromium",
     "test:business": "npx playwright test tests/doctypes --project=chromium"
+=======
+    "test": "node scripts/run-playwright.js mutation",
+    "test:smoke": "node scripts/run-playwright.js smoke",
+    "test:doctypes": "node scripts/run-playwright.js doctypes",
+    "test:mutation": "node scripts/run-playwright.js mutation",
+    "test:cross-module": "node scripts/run-playwright.js cross-module",
+    "test:permissions": "node scripts/run-playwright.js permissions",
+    "report:allure": "npx allure generate allure-results --clean -o reports/allure",
+    "report:html": "npx playwright show-report reports/html"
+>>>>>>> d17c162e143b271099c9e7b7d531e473762eafd5
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Playwright automation suite for ERPNext/AMC modules with production-safe execution guards.",
   "devDependencies": {
     "allure-commandline": "^2.37.0",
     "allure-playwright": "^3.5.0",
