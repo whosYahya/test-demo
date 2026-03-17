@@ -2,7 +2,10 @@
   "name": "amc-test",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test tests/doctypes --project=chromium",
+    "test:business": "npx playwright test tests/doctypes --project=chromium"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
