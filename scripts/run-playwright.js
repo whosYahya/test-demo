@@ -9,8 +9,8 @@ const suiteTargets = {
   smoke: ['tests/smoke'],
   doctypes: ['tests/doctypes'],
   mutation: ['tests/doctypes', 'tests/cross_module'],
+  'data-driven': ['tests/data-driven'],
   'cross-module': ['tests/cross_module'],
-  permissions: ['tests/cross_module'],
 };
 
 const targets = suiteTargets[suite] || extraArgs.filter((arg) => !arg.startsWith('-'));

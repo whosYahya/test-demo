@@ -26,7 +26,6 @@ jobs:
       BASE_URL: ${{ secrets.SMOKE_BASE_URL != '' && secrets.SMOKE_BASE_URL || secrets.BASE_URL }}
       ERPNEXT_USER: ${{ secrets.SMOKE_ERPNEXT_USER != '' && secrets.SMOKE_ERPNEXT_USER || secrets.ERPNEXT_USER }}
       ERPNEXT_PASS: ${{ secrets.SMOKE_ERPNEXT_PASS != '' && secrets.SMOKE_ERPNEXT_PASS || secrets.ERPNEXT_PASS }}
-      ALLOW_PROD_SMOKE: ${{ secrets.ALLOW_PROD_SMOKE }}
       CI: true
 
     steps:
@@ -103,6 +102,16 @@ jobs:
         run: npm run test:mutation -- --reporter=list,junit,html,json
         continue-on-error: true
 
+      - name: Run Data-Driven Suite
+        run: npm run test:data-driven -- --reporter=list,junit
+        continue-on-error: true
+        env:
+          BASE_URL: ${{ secrets.NONPROD_BASE_URL }}
+          ERPNEXT_USER: ${{ secrets.NONPROD_ERPNEXT_USER }}
+          ERPNEXT_PASS: ${{ secrets.NONPROD_ERPNEXT_PASS }}
+          ALLOW_MUTATION_TESTS: 'true'
+          CI: true
+
       - name: Update AMC Master Tracker
         run: |
           python update_tracker.py \
@@ -140,5 +149,13 @@ jobs:
         if: always()
         with:
           name: test-evidence
+          path: test-results/
+          retention-days: 14
+
+      - name: Upload data-driven results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: data-driven-results
           path: test-results/
           retention-days: 14

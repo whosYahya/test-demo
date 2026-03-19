@@ -799,7 +799,8 @@ const customers = (() => {
     await customerField.fill(customerName);
   
     // Save the parent form to enable child table
-    await page.getByRole('button', { name: 'Save' }).click();
+    await page.keyboard.press(process.platform === 'darwin' ? 'Meta+s' : 'Control+s');
+    await page.waitForTimeout(1000);
   
     const branchSection = page.locator('form').filter({ hasText: 'branch_locations_table' });
     await branchSection.waitFor({ state: 'visible', timeout: 20000 });
@@ -827,21 +828,35 @@ const customers = (() => {
     // Verify the branch appears in the parent form
     // await expect(page.getByText(branchName + address)).toBeVisible({ timeout: 10000 });
   
-    await page.getByRole('button', { name: 'Save' }).click();
+    await page.keyboard.press(process.platform === 'darwin' ? 'Meta+s' : 'Control+s');
+    await page.waitForTimeout(1500);
+
+    if (page.url().includes('/app/customer-branch/')) {
+      await page.goBack({ waitUntil: 'networkidle' }).catch(() => null);
+    }
+
+    await page.waitForURL(/\/app\/amc-customers\//, { timeout: 20000 }).catch(() => null);
+    await page.waitForSelector('.frappe-control[data-fieldname="contacts"]', { timeout: 10000 }).catch(() => null);
   
   }
   
   // Similar helper for Contacts child table
   async function addContactRow(page, { name, mobile, email, branch, isPrimary }) {
-    const table = page.locator('.frappe-control[data-fieldname="contacts"]');
+    const table = page.locator(
+      '.frappe-control[data-fieldname="contacts"], ' +
+      '.frappe-control[data-fieldname="contact_details_table"], ' +
+      '[data-fieldname="contact_details_table"]'
+    ).filter({ has: page.getByRole('button', { name: /add row/i }) }).first();
+    await table.waitFor({ state: 'visible', timeout: 10000 });
+    const rows = table.locator('.frappe-row, .grid-row');
   
-    const before = await table.locator('.frappe-row').count();
+    const before = await rows.count();
   
-    await table.locator('button:has-text("Add Row")').click();
+    await table.getByRole('button', { name: /add row/i }).click();
   
-    await table.locator('.frappe-row').nth(before).waitFor({ state: 'attached', timeout: 5000 });
+    await rows.nth(before).waitFor({ state: 'attached', timeout: 5000 });
   
-    const row = table.locator('.frappe-row').nth(before);
+    const row = rows.nth(before);
     if (name) await row.locator('[data-fieldname="contact_name"] input').fill(name);
     if (mobile) await row.locator('[data-fieldname="mobile"] input').fill(mobile);
     if (email) await row.locator('[data-fieldname="email"] input').fill(email);

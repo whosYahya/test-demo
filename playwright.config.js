@@ -2,6 +2,7 @@
 const path = require('path');
 const { defineConfig, devices } = require('@playwright/test');
 const { resolveBaseUrl } = require('./utils/environment');
+const { resolveProjectUse } = require('./utils/browser');
 
 module.exports = defineConfig({
   testDir: './tests',
@@ -30,7 +31,7 @@ module.exports = defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'], ...resolveProjectUse() },
     },
   ],
 });

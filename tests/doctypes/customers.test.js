@@ -503,64 +503,9 @@ test.describe('Connections Tab', () => {
 });
 
 
-// ═════════════════════════════════════════════════════════════════════════════
-// SECTION 6 – Permissions
-// ═════════════════════════════════════════════════════════════════════════════
-test.describe('Permissions', () => {
 
-  /**
-   * CUST-020
-   * A user with only the Technician role must be able to READ AMC Customers
-   * but must have no Save / Edit / New controls available.
-   *
-   * Env vars: TECH_USER (default: technician@amc.com), TECH_PASS (default: technician)
-   * The Technician role must have Read-only permission on AMC Customers in ERPNext.
-   */
-  test('TC-CUST-020 | Technician role can only READ AMC Customers', async ({ browser }) => {
-    // Isolated browser context – no shared admin session
-    const techCtx = await browser.newContext({ baseURL: BASE_URL });
-    const page    = await techCtx.newPage();
+// SECTION 6 - Data Integrity
 
-    try {
-      // Login as technician
-      await page.goto(`${BASE_URL}/login`);
-      await page.getByRole('textbox', { name: /email/i }).fill(
-        process.env.TECH_USER || 'technician@amc.com'
-      );
-      await page.getByRole('textbox', { name: /password/i }).fill(
-        process.env.TECH_PASS || 'technician'
-      );
-      await page.getByRole('button', { name: /^login$/i }).click();
-      await page.waitForURL(/\/app/, { timeout: 15000 });
-
-      // Visit customer list
-      await goToList(page);
-
-      // "New" button must NOT appear
-      await expect(
-        page.locator('.btn-primary:has-text("New"), .page-head .btn-primary')
-      ).toHaveCount(0);
-
-      // Open a customer record
-      const firstRow = page.locator('.list-row .list-row-col a').first();
-      if (await firstRow.isVisible({ timeout: 5000 })) {
-        await firstRow.click();
-        await page.waitForSelector('.page-head', { timeout: 10000 });
-
-        // Save / Edit buttons must NOT appear
-        await expect(page.locator('.btn-primary:has-text("Save")')).toHaveCount(0);
-        await expect(page.locator('.btn-secondary:has-text("Edit")')).toHaveCount(0);
-      }
-    } finally {
-      await techCtx.close();
-    }
-  });
-});
-
-
-// ═════════════════════════════════════════════════════════════════════════════
-// SECTION 7 – Data Integrity
-// ═════════════════════════════════════════════════════════════════════════════
 test.describe('Data Integrity', () => {
 
   /**

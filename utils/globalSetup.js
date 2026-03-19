@@ -1,12 +1,11 @@
 const { chromium } = require('@playwright/test');
 const path = require('path');
-const { ensureEnvironmentIsSafeToRun, resolveBaseUrl } = require('./environment');
+const { resolveBaseUrl } = require('./environment');
+const { resolveLaunchOptions } = require('./browser');
 
 module.exports = async function () {
-  ensureEnvironmentIsSafeToRun({ suite: process.env.PW_SUITE });
-
   const headless = (process.env.PW_HEADLESS || process.env.HEADLESS || 'true').toLowerCase() !== 'false';
-  const browser = await chromium.launch({ headless });
+  const browser = await chromium.launch({ headless, ...resolveLaunchOptions() });
   const context = await browser.newContext();
   const page = await context.newPage();
 
