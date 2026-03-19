@@ -9,7 +9,13 @@ const suiteTargets = {
   smoke: ['tests/smoke'],
   doctypes: ['tests/doctypes'],
   mutation: ['tests/doctypes', 'tests/cross_module'],
-  'data-driven': ['tests/data-driven'],
+  'data-driven': [
+    'tests/data-driven/customers_ddt.spec.js',
+    'tests/data-driven/attendance_ddt.spec.js',
+    'tests/data-driven/expenses_ddt.spec.js',
+    'tests/data-driven/leaves_ddt.spec.js',
+    'tests/data-driven/vendor_ddt.spec.js',
+  ],
   'cross-module': ['tests/cross_module'],
 };
 

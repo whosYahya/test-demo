@@ -1,0 +1,15 @@
+employee,employee_name,leave_type,from_date,to_date,description,half_day,half_day_date,leave_approver,company,department,follow_via_email
+EMP-001,Rohan Mehta,Casual Leave,2025-01-20,2025-01-22,Personal work at home town,0,,manager@amc.com,AMC Services Ltd,Operations,1
+EMP-002,Priya Nair,Sick Leave,2025-01-15,2025-01-16,Fever - doctor advised rest,0,,manager@amc.com,AMC Services Ltd,Accounts,1
+EMP-003,Sameer Joshi,Earned Leave,2025-02-01,2025-02-07,Family vacation - annual trip,0,,manager@amc.com,AMC Services Ltd,Operations,0
+EMP-004,Ananya Das,Casual Leave,2025-01-20,2025-01-20,Personal errand - bank work,1,2025-01-20,manager@amc.com,AMC Services Ltd,HR,1
+EMP-005,Mehul Shah,Sick Leave,2025-01-10,2025-01-10,Doctor appointment - routine checkup,0,,manager@amc.com,AMC Services Ltd,Maintenance,0
+EMP-006,Nikhil Verma,Compensatory Off,2025-01-25,2025-01-25,Comp off for working on 2025-01-05,0,,manager@amc.com,AMC Services Ltd,Operations,0
+EMP-007,Kavita Rao,Casual Leave,2025-01-25,2025-01-20,End date is before start date,0,,manager@amc.com,AMC Services Ltd,IT,0
+EMP-008,Amit Roy,Casual Leave,2025-01-28,2025-01-30,Personal reasons,0,,manager@amc.com,AMC Services Ltd,Accounts,0
+EMP-009,Farhan Shaikh,INVALID LEAVE TYPE,2025-01-20,2025-01-21,Personal work,0,,manager@amc.com,AMC Services Ltd,Operations,0
+,Deepa Krishnan,Sick Leave,2025-01-22,2025-01-23,Migraine,0,,manager@amc.com,AMC Services Ltd,HR,0
+EMP-011,Rajesh Pillai,Earned Leave,not-a-date,2025-01-25,Vacation,0,,manager@amc.com,AMC Services Ltd,Maintenance,0
+EMP-012,Sunita Patil,Casual Leave,2025-01-20,2025-01-22,Rest,0,,manager@amc.com,AMC Services Ltd,Operations,0
+EMP-013,Arjun Sharma,Sick Leave,2025-01-10,2025-01-12,Food poisoning - doctor visit,0,,manager@amc.com,AMC Services Ltd,IT,0
+EMP-014,Meera Pillai,Casual Leave,2025-02-10,2025-02-11,Personal work,0,,manager@amc.com,AMC Services Ltd,Accounts,1

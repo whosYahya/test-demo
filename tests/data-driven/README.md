@@ -1,15 +1,20 @@
-# Data-Driven Customer Testing
+# Data-Driven Testing
 
-Data-driven testing means the same Playwright flow is reused for many customer rows from a file instead of hard-coding each customer inside the test. This lets the team take a boss-provided customer list, run it through ERPNext, and get a business-friendly result for every row.
+This folder now has two kinds of data-driven coverage:
 
-Boss workflow:
+- `customers_ddt.spec.js` uses business input rows from `fixtures/testData/customers.csv` or `.xlsx`.
+- `attendance_ddt.spec.js`, `contract_ddt.spec.js`, `expenses_ddt.spec.js`, `leaves_ddt.spec.js`, `service_calls_ddt.spec.js`, and `vendor_ddt.spec.js` reuse the doctype scenario suites through the existing case workbooks in `fixtures/testData/cases_doctype/`.
+
+For customers, data-driven testing means the same Playwright flow is reused for many customer rows from a file instead of hard-coding each customer inside the test. This lets the team take a boss-provided customer list, run it through ERPNext, and get a business-friendly result for every row.
+
+Customer workflow:
 
 1. Edit `customers.csv`
 2. Commit the file
 3. Run the pipeline
 4. Check the tracker
 
-To switch from CSV to Excel, change one word in the spec file:
+To switch the customer suite from CSV to Excel, change one word in the spec file:
 
 - In `tests/data-driven/customers_ddt.spec.js`, replace `customers.csv` with `customers.xlsx`
 
@@ -19,7 +24,19 @@ To run locally:
 npm run test:data-driven
 ```
 
-How to read the Playwright report:
+Do we need a new CSV/XLSX for the doctype suites?
+
+- No new file is required just to run those suites from `tests/data-driven`.
+- Those modules already have case workbooks:
+- `fixtures/testData/cases_doctype/attendance_cases.xlsx`
+- `fixtures/testData/cases_doctype/contract_cases.xlsx`
+- `fixtures/testData/cases_doctype/expenses_cases.xlsx`
+- `fixtures/testData/cases_doctype/leaves_cases.xlsx`
+- `fixtures/testData/cases_doctype/service_call_cases.xlsx`
+- `fixtures/testData/cases_doctype/vendor_cases.xlsx`
+- You only need a new CSV/XLSX if you want row-level business input like the customer import flow, where each spreadsheet row becomes test data.
+
+How to read the customer Playwright report:
 
 - `DDT-CUST-001` means customer data row 1
 - `DDT-CUST-002` means customer data row 2

@@ -1,0 +1,15 @@
+employee,employee_name,posting_date,expense_date,expense_type,description,amount,cost_center,project,expense_approver,company,department
+EMP-001,Rohan Mehta,2025-01-10,2025-01-10,Travel,Cab fare to client site - Andheri to BKC,1500.00,Main Cost Center,PROJ-AMC-001,manager@amc.com,AMC Services Ltd,Operations
+EMP-002,Priya Nair,2025-01-11,2025-01-11,Meals,Team lunch during client meeting at Taj,850.00,Main Cost Center,PROJ-AMC-002,manager@amc.com,AMC Services Ltd,Accounts
+EMP-003,Sameer Joshi,2025-01-12,2025-01-12,Accommodation,Hotel stay for Pune client visit - 1 night,4500.00,Main Cost Center,PROJ-AMC-001,manager@amc.com,AMC Services Ltd,Operations
+EMP-004,Ananya Das,2025-01-13,2025-01-13,Travel,Flight ticket Delhi-Mumbai - client conference,8200.00,Main Cost Center,PROJ-AMC-003,manager@amc.com,AMC Services Ltd,HR
+EMP-005,Mehul Shah,2025-01-14,2025-01-14,Telephone,Mobile reimbursement January 2025,650.00,Main Cost Center,,manager@amc.com,AMC Services Ltd,Maintenance
+EMP-006,Nikhil Verma,2025-01-15,2025-01-15,Travel,Cab to airport for client visit,800.00,Main Cost Center,,manager@amc.com,AMC Services Ltd,Operations
+EMP-007,Kavita Rao,2025-01-10,2025-01-10,Meals,Team dinner - project completion,12000.00,Main Cost Center,PROJ-AMC-001,manager@amc.com,AMC Services Ltd,IT
+EMP-008,Amit Roy,2025-01-11,2025-01-11,Travel,Cab fare reimbursement,-500.00,Main Cost Center,PROJ-AMC-002,manager@amc.com,AMC Services Ltd,Accounts
+EMP-009,Farhan Shaikh,2025-01-12,2025-01-12,Travel,Zero value claim,0,Main Cost Center,PROJ-AMC-001,manager@amc.com,AMC Services Ltd,Operations
+EMP-010,Deepa Krishnan,not-a-date,2025-01-13,Travel,Cab fare,1200.00,Main Cost Center,PROJ-AMC-002,manager@amc.com,AMC Services Ltd,HR
+,Rajesh Pillai,2025-01-14,2025-01-14,Meals,Lunch meeting,500.00,Main Cost Center,PROJ-AMC-001,manager@amc.com,AMC Services Ltd,Maintenance
+EMP-012,Sunita Patil,2025-01-15,2025-01-15,UNKNOWN TYPE,Some expense,750.00,Main Cost Center,PROJ-AMC-003,manager@amc.com,AMC Services Ltd,Operations
+EMP-013,Arjun Sharma,2025-01-10,2025-01-10,Travel,Airport pickup and drop,2500.00,Main Cost Center,PROJ-AMC-001,manager@amc.com,AMC Services Ltd,IT
+EMP-014,Meera Pillai,2025-01-11,2025-01-11,Travel,Cab fare to head office,950.00,Main Cost Center,,manager@amc.com,AMC Services Ltd,Accounts

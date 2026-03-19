@@ -1,0 +1,15 @@
+supplier_name,supplier_type,supplier_group,tax_id,pan,email_id,mobile_no,phone_no,payment_terms,default_currency,country,on_hold,is_internal_supplier
+Apex HVAC Supplies Pvt Ltd,Company,Services,27AABCA1234D1ZV,AABCA1234D,rakesh@apexhvac.com,9876543210,02212345678,Net 30,INR,India,0,0
+CoolTech Parts Private Limited,Company,Raw Material,29AAFCC4321K1ZT,AAFCC4321K,sneha@cooltech.com,9988776655,08023456789,Net 45,INR,India,0,0
+Suresh AC Services,Individual,Services,07AAGFS2468R1Z2,AAGFS2468R,suresh@gmail.com,9765432109,,Immediate,INR,India,0,0
+Pinnacle Refrigeration Works,Company,Services,24AABCP1357Q1ZP,AABCP1357Q,amit@pinnacle.com,9123456780,02612345678,Net 30,INR,India,0,0
+Delta Cooling Components,Company,Raw Material,12345INVALIDGST,AABCD9876L,pradeep@delta.com,9000011111,04412345678,Net 30,INR,India,0,0
+National Spares and Equipment,Company,Raw Material,19AACCN1357P1Z8,1234P5678Z,vijay@national.com,9111122223,03312345678,Net 60,INR,India,0,0
+Greenfield HVAC Solutions,,Services,22AABCG2468S1ZQ,AABCG2468S,ritu@greenfield.com,9222233334,02012345678,Net 30,INR,India,0,0
+Horizon Parts and Components,Company,Raw Material,09AABCH3579T1ZR,AABCH3579T,not-an-email,9333344445,07912345678,Net 30,INR,India,0,0
+Sunrise Equipment Suppliers,Company,Services,32AABCS4680U1ZS,AABCS4680U,anita@sunrise.com,98ABCD1234,04842345678,Net 45,INR,India,0,0
+,Company,Services,15AABCT5791V1ZT,AABCT5791V,mohan@vendor.com,9444455556,08012345678,Net 30,INR,India,0,0
+Blue Star Vendor Network,Company,Services,33AABCB6802W1ZU,AABCB6802W,neha@bluestar.com,9555566667,01112345678,INVALID TERMS,INR,India,0,0
+Arctic HVAC Services Ltd,Company,Services,27AABCA7913X1ZV,AABCA7913X,kiran@arctic.com,9666677778,02212987654,Net 30,INR,India,0,0
+Polar Tech Maintenance,Company,Raw Material,29AABCP8024Y1ZW,AABCP8024Y,deepak@polar.com,9777788889,08023987654,Net 30,INR,India,0,0
+Summit HVAC Group India,Company,Services,07AABCS9135Z1ZX,AABCS9135Z,meera@summit.com,9888899990,01123456789,Net 30,INR,India,0,0

@@ -1,0 +1,16 @@
+employee,employee_name,attendance_date,status,shift,working_hours,in_time,out_time,late_entry,early_exit,leave_type,company,department
+EMP-001,Rohan Mehta,2025-01-06,Present,Morning Shift,8.5,2025-01-06 09:00:00,2025-01-06 17:30:00,0,0,,AMC Services Ltd,Operations
+EMP-002,Priya Nair,2025-01-06,Present,Morning Shift,9.0,2025-01-06 09:00:00,2025-01-06 18:00:00,0,0,,AMC Services Ltd,Accounts
+EMP-003,Sameer Joshi,2025-01-06,Absent,Morning Shift,0,,,0,0,,AMC Services Ltd,Operations
+EMP-004,Ananya Das,2025-01-06,Half Day,Morning Shift,4.0,2025-01-06 09:00:00,2025-01-06 13:00:00,0,1,,AMC Services Ltd,HR
+EMP-005,Mehul Shah,2025-01-06,Present,Night Shift,8.0,2025-01-06 22:00:00,2025-01-07 06:00:00,0,0,,AMC Services Ltd,Maintenance
+EMP-006,Nikhil Verma,2025-01-06,Present,Morning Shift,7.5,2025-01-06 09:30:00,2025-01-06 17:00:00,1,0,,AMC Services Ltd,Operations
+EMP-007,Kavita Rao,2025-01-06,Work From Home,Morning Shift,8.5,2025-01-06 09:00:00,2025-01-06 17:30:00,0,0,,AMC Services Ltd,IT
+EMP-008,Amit Roy,2025-01-06,On Leave,,,,,0,0,Casual Leave,AMC Services Ltd,Accounts
+EMP-001,Rohan Mehta,2025-01-06,Present,Morning Shift,8.0,2025-01-06 09:00:00,2025-01-06 17:00:00,0,0,,AMC Services Ltd,Operations
+,Farhan Shaikh,2025-01-06,Present,Morning Shift,8.0,2025-01-06 09:00:00,2025-01-06 17:00:00,0,0,,AMC Services Ltd,Operations
+EMP-010,Deepa Krishnan,not-a-date,Present,Morning Shift,8.0,,,0,0,,AMC Services Ltd,HR
+EMP-011,Rajesh Pillai,2025-01-06,HOLIDAY,Morning Shift,8.0,2025-01-06 09:00:00,2025-01-06 17:00:00,0,0,,AMC Services Ltd,Maintenance
+EMP-012,Sunita Patil,2025-01-06,Present,Morning Shift,-2.0,2025-01-06 09:00:00,2025-01-06 17:00:00,0,0,,AMC Services Ltd,Operations
+EMP-013,Arjun Sharma,2025-01-06,Absent,Morning Shift,8.5,2025-01-06 09:00:00,2025-01-06 17:30:00,0,0,,AMC Services Ltd,IT
+EMP-014,Meera Pillai,2025-01-06,Present,,8.0,2025-01-06 09:00:00,2025-01-06 17:00:00,0,0,,AMC Services Ltd,Accounts

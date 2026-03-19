@@ -15,7 +15,7 @@ const {
   getSeriesOptions,
 } = leaves;
 
-const CASES_FILE = path.resolve(__dirname, '..', '..', 'fixtures', 'testData', 'leaves_cases.xlsx');
+const CASES_FILE = path.resolve(__dirname, '..', '..', 'fixtures', 'testData', 'cases_doctype', 'leaves_cases.xlsx');
 const CASES = loadLeaveCases(CASES_FILE);
 const REQUIRED_FIELDS = ['Employee', 'Leave Type', 'From Date', 'To Date', 'Leave Approver'];
 

@@ -196,7 +196,7 @@ function buildRowResult(row, browserOutcome) {
     return {
       row_number: row._row_number,
       customer_name: row.customer_name || '(empty)',
-      outcome: 'SKIPPED',
+      outcome: 'REJECTED',
       reason: preIssues[0] || 'Customer Name is required',
       action_needed: 'Add the customer name',
       pre_issues: preIssues.join('; '),
