@@ -1,236 +1,273 @@
-# AMC Playwright Testing
+# AMC Playwright Test Suite
 
-Playwright automation for ERPNext/AMC doctypes, smoke coverage, cross-module checks, and CSV-driven data-driven testing.
+Playwright automation for ERPNext / Frappe AMC workflows.
 
-This repository now supports two kinds of automated coverage:
+This repo includes:
 
-- scenario-based doctype tests in `tests/doctypes`
-- row-driven DDT suites in `tests/data-driven`
+- smoke checks
+- business Requirement Cases
+- doctype mutation tests
+- cross-module tests
+- data-driven tests from CSV files
 
-## Safety Model
+## What This Repo Is For
 
-This suite can create or modify ERPNext business data such as:
+Use this project when you want to:
 
-- Customers
-- Vendors
-- Contracts
-- Attendance
-- Leave Applications
-- Expense Claims
-- Service Calls
+- validate that key ERPNext forms open correctly
+- run end-to-end tests for AMC doctypes
+- test business input files row by row
+- generate tracker-ready pass/fail output in `AMC_Master_Tracker.xlsx`
 
-Because of that:
+## Before You Run Anything
 
-- `tests/smoke` is the safest path for read-only checks
-- mutation suites should run only against UAT, staging, or another non-production site
-- the repo includes production safety toggles in `.env`
+Some suites create or edit real ERPNext data.
 
-## Current Repo Layout
+- `tests/smoke` is the safest option
+- `tests/doctypes`, `tests/cross_module`, and most `tests/data-driven` specs are mutation tests
+- if you are testing against production, start with smoke only
 
-- `api/`
-  Shared API helpers for Frappe and ERPNext request calls.
+Important:
 
-- `data/`
-  Loaders and factories used by scenario suites and DDT flows.
+- keep `AMC_Master_Tracker.xlsx` closed while DDT specs are running
+- if Excel has the file open, tracker sheet updates can fail with `EBUSY`
 
-- `fixtures/testData/`
-  Business input files and case workbooks.
+## Quick Start
 
-- `pages/`
-  Shared page objects such as login and app switcher helpers.
-
-- `scripts/`
-  Suite runner entrypoints, including the Playwright runner wrapper.
-
-- `tests/smoke/`
-  Read-only smoke coverage.
-
-- `tests/doctypes/`
-  Scenario-based doctype tests.
-
-- `tests/data-driven/`
-  Data-driven specs. Some are CSV-row-based, some currently wrap existing scenario suites.
-
-- `tests/cross_module/`
-  Cross-module behavior and permission checks.
-
-- `utils/`
-  Shared helpers, environment resolution, browser config, auth setup, and data loading.
-
-- `workflows/`
-  Reusable authentication/session workflows.
-
-- `AMC_Master_Tracker.xlsx`
-  Tracker workbook updated by DDT sheets and the run-tracker script.
-
-- `update_tracker.py`
-  Updates the `Run Tracker` sheet from Playwright JSON results.
-
-## Test Data Files
-
-The current row-input CSV files in `fixtures/testData/` are:
-
-- `customers.csv`
-- `attendance.csv`
-- `expense_claim.csv`
-- `leave_application.csv`
-- `vendor.csv`
-
-The current case workbooks in `fixtures/testData/cases_doctype/` are:
-
-- `attendance_cases.xlsx`
-- `contract_cases.xlsx`
-- `customers_cases.xlsx`
-- `expenses_cases.xlsx`
-- `leaves_cases.xlsx`
-- `service_call_cases.xlsx`
-- `vendor_cases.xlsx`
-
-## Test Suites
-
-### Smoke
-
-- `tests/smoke/smoke.spec.js`
-
-Use this for route and form availability checks.
-
-### Doctype Scenario Suites
-
-- `tests/doctypes/attendance.test.js`
-- `tests/doctypes/contract.test.js`
-- `tests/doctypes/customers.test.js`
-- `tests/doctypes/expenses.test.js`
-- `tests/doctypes/leaves.test.js`
-- `tests/doctypes/service_calls.test.js`
-- `tests/doctypes/vendor.test.js`
-
-These are scenario-based mutation suites.
-
-### Data-Driven Suites
-
-- `tests/data-driven/customers_ddt.spec.js`
-- `tests/data-driven/attendance_ddt.spec.js`
-- `tests/data-driven/expenses_ddt.spec.js`
-- `tests/data-driven/leaves_ddt.spec.js`
-- `tests/data-driven/vendor_ddt.spec.js`
-
-These files use CSV rows as test input.
-
-The following files still expose existing doctype scenario coverage from the data-driven folder:
-
-- `tests/data-driven/contract_ddt.spec.js`
-- `tests/data-driven/service_calls_ddt.spec.js`
-
-Shared DDT utilities live in:
-
-- `tests/data-driven/_shared.js`
-
-## Tracker Updates
-
-There are currently two tracker update paths:
-
-### Data-Driven Sheet Updates
-
-The CSV-driven DDT specs write results into `AMC_Master_Tracker.xlsx`:
-
-- `customers_ddt.spec.js` writes `Data-Driven Results`
-- `attendance_ddt.spec.js` writes `DDT Attendance`
-- `expenses_ddt.spec.js` writes `DDT Expense Claim`
-- `leaves_ddt.spec.js` writes `DDT Leave Application`
-- `vendor_ddt.spec.js` writes `DDT Vendor`
-
-### Run Tracker Updates
-
-`update_tracker.py` reads Playwright JSON results and updates the `Run Tracker` sheet in `AMC_Master_Tracker.xlsx`.
-
-## Environment Setup
-
-1. Install dependencies:
+### 1. Install dependencies
 
 ```bash
 npm ci
 ```
 
-2. Copy the sample environment:
+### 2. Create your environment file
 
-```bash
-cp .env.example .env
-```
+Create a `.env` file from `.env.example`.
 
-3. Fill the minimum values:
+Minimum values:
 
 ```env
-BASE_URL=https://your-uat-site.example.com
-ERPNEXT_USER=automation@example.com
-ERPNEXT_PASS=change-me
-ALLOW_PROD_SMOKE=false
-ALLOW_MUTATION_TESTS=false
+BASE_URL=https://your-site.example.com
+ERPNEXT_USER=your-user@example.com
+ERPNEXT_PASS=your-password
 ```
 
-Optional values in `.env.example` include:
+Notes:
 
-- cross-module users and approvers
-- attendance seed values
-- expense claim seed values
-- technician credentials
+- if `BASE_URL` is blank, the suite falls back to `<LOCAL_HOST LINK>`
+- this works for local ERPNext as well as UAT / production URLs
 
-## Commands
-
-Run smoke:
+### 3. Run smoke first
 
 ```bash
 npm run test:smoke
 ```
 
-Run doctype mutation coverage:
+If smoke passes, then move to the heavier suites.
+
+## Local vs Hosted / Prod
+
+### Local ERPNext
+
+Use:
+
+```env
+BASE_URL=<LOCAL_HOST LINK>
+```
+
+or leave `BASE_URL` empty and let the repo use the local default.
+
+### UAT / Staging / Production
+
+Set:
+
+```env
+BASE_URL=https://your-site.example.com
+ERPNEXT_USER=...
+ERPNEXT_PASS=...
+```
+
+Recommended order:
+
+1. run smoke
+2. run only the suites you actually need
+3. run mutation suites only with approval
+
+## Test Commands
+
+### Safe starting point
+
+```bash
+npm run test:smoke
+```
+
+### Scenario-based doctype suite
 
 ```bash
 npm run test:doctypes
 ```
 
-Run the broader mutation suite:
+### Full mutation suite
 
 ```bash
 npm run test:mutation
 ```
 
-Run CSV/data-driven suites:
+This runs:
 
-```bash
-npm run test:data-driven
-```
+- `tests/doctypes`
+- `tests/cross_module`
 
-Run cross-module tests:
+### Cross-module only
 
 ```bash
 npm run test:cross-module
 ```
 
-Generate Allure report:
+### Standard CSV-driven DDT suite
 
 ```bash
-npm run report:allure
+npm run test:data-driven
 ```
 
-Open Playwright HTML report:
+This currently runs:
+
+- `customers_ddt.spec.js`
+- `attendance_ddt.spec.js`
+- `expenses_ddt.spec.js`
+- `leaves_ddt.spec.js`
+- `vendor_ddt.spec.js`
+
+### Service Call DDT
+
+```bash
+npx playwright test tests/data-driven/service_calls_ddt.spec.js
+```
+
+### AMC Contract DDT
+
+```bash
+npx playwright test tests/data-driven/contract_ddt.spec.js
+```
+
+## Recommended Workflows
+
+### If someone pulls this repo and wants to start testing their own app
+
+1. Clone the repo
+2. Run `npm ci`
+3. Create `.env`
+4. Set `BASE_URL`, `ERPNEXT_USER`, and `ERPNEXT_PASS`
+5. Run `npm run test:smoke`
+6. If smoke is good, run the suite you need
+7. Review the HTML report and tracker workbook
+
+### If the target is production
+
+1. Run only `npm run test:smoke` first
+2. Confirm the forms and routes are reachable
+3. Run mutation tests only if your team explicitly wants live data changes
+
+### If the goal is data validation from spreadsheets
+
+1. Update the CSV file in `fixtures/testData/`
+2. Run the matching DDT spec
+3. Review `AMC_Master_Tracker.xlsx`
+
+## Data Files
+
+Current row-input files:
+
+- [customers.csv](c:/Users/dell/Desktop/Work/AMC%20TEST/fixtures/testData/customers.csv)
+- [attendance.csv](c:/Users/dell/Desktop/Work/AMC%20TEST/fixtures/testData/attendance.csv)
+- [expense_claim.csv](c:/Users/dell/Desktop/Work/AMC%20TEST/fixtures/testData/expense_claim.csv)
+- [leave_application.csv](c:/Users/dell/Desktop/Work/AMC%20TEST/fixtures/testData/leave_application.csv)
+- [vendor.csv](c:/Users/dell/Desktop/Work/AMC%20TEST/fixtures/testData/vendor.csv)
+- [service_calls.csv](c:/Users/dell/Desktop/Work/AMC%20TEST/fixtures/testData/service_calls.csv)
+- [amc_contracts.csv](c:/Users/dell/Desktop/Work/AMC%20TEST/fixtures/testData/amc_contracts.csv)
+
+Case workbooks:
+
+- `fixtures/testData/cases_doctype/attendance_cases.xlsx`
+- `fixtures/testData/cases_doctype/contract_cases.xlsx`
+- `fixtures/testData/cases_doctype/customers_cases.xlsx`
+- `fixtures/testData/cases_doctype/expenses_cases.xlsx`
+- `fixtures/testData/cases_doctype/leaves_cases.xlsx`
+- `fixtures/testData/cases_doctype/service_call_cases.xlsx`
+- `fixtures/testData/cases_doctype/vendor_cases.xlsx`
+
+## Reports and Tracker
+
+### Playwright HTML report
 
 ```bash
 npm run report:html
 ```
 
-## Current Execution Notes
+Output:
 
-- If `BASE_URL` is missing, local helpers may fall back to `http://127.0.0.1:8004`
-- DDT date normalization is handled in `tests/data-driven/_shared.js`
-- leave dates are converted to `DD-MM-YYYY` before entry
-- attendance and expense dates stay in `YYYY-MM-DD`
-- some DDT rows are intentionally invalid and should be rejected by ERPNext
-- `reply.md` and `prompt.md` are not part of the framework runtime
+- `reports/html`
 
-## Recommended Workflow
+### Allure report
 
-1. Update `.env` for the target non-production ERPNext site.
-2. Add or edit CSV rows in `fixtures/testData/`.
-3. Run `npm run test:data-driven` for row-driven validation.
-4. Run `python update_tracker.py --results test-results/results.json --excel AMC_Master_Tracker.xlsx` if you want to refresh the run tracker from Playwright results.
-5. Review `AMC_Master_Tracker.xlsx`, `reports/html`, and `allure-results`.
+```bash
+npm run report:allure
+```
+
+Output:
+
+- `reports/allure`
+
+### Tracker workbook
+
+DDT specs write row-wise results into:
+
+- [AMC_Master_Tracker.xlsx](c:/Users/dell/Desktop/Work/AMC%20TEST/AMC_Master_Tracker.xlsx)
+
+Current DDT sheets include:
+
+- `Data-Driven Results`
+- `DDT Attendance`
+- `DDT Leave Application`
+- `DDT Vendor`
+- `DDT Service Call`
+- `DDT AMC Contract`
+
+If you want to update the run tracker from Playwright JSON results:
+
+```bash
+python update_tracker.py --results test-results/results.json --excel AMC_Master_Tracker.xlsx
+```
+
+## Important Repo Files
+
+- [playwright.config.js](c:/Users/dell/Desktop/Work/AMC%20TEST/playwright.config.js): Playwright config, reporters, global setup
+- [scripts/run-playwright.js](c:/Users/dell/Desktop/Work/AMC%20TEST/scripts/run-playwright.js): npm suite runner
+- [utils/globalSetup.js](c:/Users/dell/Desktop/Work/AMC%20TEST/utils/globalSetup.js): logs in once and saves auth state
+- [utils/helpers.js](c:/Users/dell/Desktop/Work/AMC%20TEST/utils/helpers.js): shared ERPNext helper library
+- [tests/doctypes](c:/Users/dell/Desktop/Work/AMC%20TEST/tests/doctypes): scenario-based tests
+- [tests/data-driven](c:/Users/dell/Desktop/Work/AMC%20TEST/tests/data-driven): DDT specs
+- [tests/smoke](c:/Users/dell/Desktop/Work/AMC%20TEST/tests/smoke): safest form-load checks
+
+## Practical Notes
+
+- the suite uses your local Chrome / Edge executable when available
+- login is handled in global setup, so each run starts with an authenticated state
+- many DDT rows are intentionally invalid; those tests still pass when ERPNext rejects the row as expected
+- if a DDT sheet does not update, check whether `AMC_Master_Tracker.xlsx` is open in Excel
+
+## Good First Run
+
+If you are new to this repo, use this exact order:
+
+```bash
+npm ci
+npm run test:smoke
+npx playwright test tests/data-driven/service_calls_ddt.spec.js
+npx playwright test tests/data-driven/contract_ddt.spec.js
+```
+
+Then open:
+
+- `reports/html`
+- `AMC_Master_Tracker.xlsx`
