@@ -1,0 +1,13 @@
+test_id,customer,branch,contact_person,start_date,end_date,no_of_services,status,service_branch,expected_outcome
+CON-DDT-001,,,,2030-04-01,2031-03-31,4,,,CREATED
+CON-DDT-002,,,,2030-04-15,2030-04-15,1,,,CREATED
+CON-DDT-003,,,,2030-05-01,2032-04-30,12,,,CREATED
+CON-DDT-004,Saffron Air Systems Pvt Ltd,Andheri Service Hub,Rohan Mehta,2030-06-01,2031-05-31,4,Active,,CREATED
+CON-DDT-005,Delta AMC Care,Cochin Branch,Amit Roy,2030-07-01,2031-06-30,2,Inactive,,CREATED
+CON-DDT-006,Orbit Climate Works,Chennai Branch,Priya Nair,2030-08-01,2031-07-31,6,,,CREATED
+CON-DDT-007,,,,,2031-03-31,4,,,REJECTED
+CON-DDT-008,,,,2030-09-01,,4,,,REJECTED
+CON-DDT-009,,,,2030-10-01,2031-09-30,,,,REJECTED
+CON-DDT-010,,,,2031-01-01,2030-12-31,4,,,REJECTED
+CON-DDT-011,Saffron Air Systems Pvt Ltd,Andheri Service Hub,Rohan Mehta,,2031-05-31,2,Active,,REJECTED
+CON-DDT-012,Delta AMC Care,Cochin Branch,Amit Roy,2030-11-01,,3,Inactive,,REJECTED
