@@ -11,3 +11,5 @@ utils/authState.json
 fixtures/authState.json
 .env
 *.log
+package-lock.json
+package.json
